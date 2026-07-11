@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JARVIS AI - Udesh</title>
+
+<style>
+body{
+    margin:0;
+    background:#000;
+    color:#00ff99;
+    font-family:Consolas, monospace;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.panel{
+    width:90%;
+    max-width:800px;
+    border:2px solid #00ff99;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 0 30px #00ff99;
+}
+
+h1{
+    font-size:45px;
+    text-shadow:0 0 15px #00ff99;
+}
+
+#typing{
+    font-size:22px;
+    white-space:pre-line;
+    min-height:220px;
+}
+
+#clock{
+    margin-top:20px;
+    font-size:28px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="panel">
+<h1>JARVIS AI</h1>
+
+<div id="typing"></div>
+
+<div id="clock"></div>
+
+</div>
+
+<script>
+
+const text=`Hello Udesh.
+
+Welcome back.
+
+Identity Verified.
+
+I am Jarvis.
+
+Your family introduction.
+
+Your Name is Udesh.
+
+Your Mother is Laxmi Devi.
+
+Your Father is Gopal Das.
+
+Your Sister is Rani Mahant.
+
+Your Brother is Maheshwar.
+
+Have a wonderful day, Udesh.`;
+
+let i=0;
+
+function typing(){
+
+if(i<text.length){
+
+document.getElementById("typing").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typing,40);
+
+}
+
+}
+
+typing();
+
+window.onload=()=>{
+
+let speech=new SpeechSynthesisUtterance(text);
+
+speech.lang="en-IN";
+
+speech.rate=0.9;
+
+speech.pitch=1;
+
+speech.volume=1;
+
+speechSynthesis.speak(speech);
+
+}
+
+setInterval(()=>{
+
+document.getElementById("clock").innerHTML=new Date().toLocaleTimeString();
+
+},1000);
+
+</script>
+
+</body>
+</html>
